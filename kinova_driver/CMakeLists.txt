@@ -12,6 +12,7 @@ find_package(catkin REQUIRED dynamic_reconfigure COMPONENTS
   sensor_msgs
   std_msgs
   tf
+  tf2_eigen
   interactive_markers
   visualization_msgs
 )
@@ -83,7 +84,14 @@ target_link_libraries(joint_trajectory_action_server
 install(TARGETS joint_trajectory_action_server 
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 add_dependencies(joint_trajectory_action_server ${catkin_EXPORTED_TARGETS})
-
+# 
+add_executable(kinova_position_control 
+  src/kinova_position_control.cpp
+  include/kinova_driver/kinova_position_control.h)
+target_link_libraries(kinova_position_control 
+  ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${kinova_driver_LIBRARIES})
+add_dependencies(kinova_position_control ${catkin_EXPORTED_TARGETS})
+# 
 add_executable(gripper_command_action_server 
   src/joint_trajectory_action/gripper_command_action_server.cpp 
   include/kinova_driver/gripper_command_action_server.h)

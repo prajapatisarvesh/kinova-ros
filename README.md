@@ -137,6 +137,18 @@ rosservice call /'${kinova_robotType}'_driver/in/home_arm
 ```
 
 ### Joint position control
+
+### [+] Added Position to Velocity control without action server
+
+```
+roslaunch kinova_driver kinova_position_control.launch position_topic:=/your_desired_topic
+```
+
+Here's the output for one of the joint:
+![PID output](https://i.ibb.co/x6N6CJM/1692475131-joint-2.gif)
+
+<hr/>
+
 Joint position control can be realized by calling KinovaComm::setJointAngles() in customized node, or you may simply call the node `joints_action_client.py` in the kinova_demo package. This function takes three parameters : `kinova_robotType` (eg. j2n6s300), `unit {degree | radian}` and `value` (angles for each joint). The function takes the option `-r` that will tell the robot if the angle values are relative or absolute. It also has the options `-v` for more verbose output and `-h` for help. The following code will drive the 6th joint of a 6DOF Jaco2 robot to rotate +10 degree (not to 10 degree), and print additional information about the joint position.
 
 **eg**: `rosrun kinova_demo joints_action_client.py -v -r j2n6s300 degree -- 0 0 0 0 0 10`

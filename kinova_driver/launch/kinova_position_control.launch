@@ -1,0 +1,6 @@
+<launch>
+<!-- Change arg to your desired topic -->
+  <arg name="position_topic" default="/arm_controller/command" />
+  <remap from="/arm_controller/command" to="$(arg position_topic)"/>
+  <node name="kinova_position_control" pkg="kinova_driver" type="kinova_position_control" output="screen" />
+</launch>
