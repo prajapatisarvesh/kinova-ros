@@ -145,7 +145,7 @@ roslaunch kinova_driver kinova_position_control.launch position_topic:=/your_des
 ```
 
 Here's the output for one of the joint:
-![PID output](https://i.ibb.co/x6N6CJM/1692475131-joint-2.gif)
+![PID output](art/1692475131_joint_2.gif)
 
 <hr/>
 
